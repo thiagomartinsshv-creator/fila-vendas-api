@@ -11,19 +11,19 @@ Imagine uma loja física com vários vendedores. Durante o dia, clientes chegam 
 
 **Problema comum:**
 - Vendedores se sentem desvalorizados se um mesmo colega sempre pega os "melhores" clientes
-- O gerente não tem controle sobre a ordem de atendimento
-- Não há registro de quantos clientes cada um atendeu ou quantas vendas realizou
+- O gerente não tem uma visão confiavel sobre numeros de atendimentos realizados por vendedor
+- Não há registro de quantos clientes cada um atendeu ou quantos atendimentos foram convertidos em vendas
 - Sem dados, não é possível avaliar o desempenho da equipe
 
-**Pergunta para a turma:**
-> *"Como vocês resolveriam esse problema? Papel e caneta? Planilha? Aplicativo?"*
+**Pergunta**
+> *"Como resolver esse problema? Papel e caneta? Planilha?"*
 
 **Solução proposta:**
-Um sistema digital de **"lista da vez"** — uma fila rotativa onde cada vendedor, ao atender, vai automaticamente para o final. Isso garante **equidade** e **rastreabilidade**.
+Um sistema digital de **"Lista da vez"** — uma fila rotativa onde cada vendedor, ao atender, vai automaticamente para o final. Isso garante **Organização** e **Rastreabilidade**.
 
 ---
 
-## 2. Arquitetura da Solução (2 minutos)
+## 2. Arquitetura da Solução
 
 **Tecnologias utilizadas:**
 
@@ -52,11 +52,11 @@ schemas.py     ← Validação de dados (entrada/saída da API)
 
 ---
 
-## 3. Demonstração da API (5 minutos)
+## 3. Demonstração da API
 
 ### Abra o navegador em `http://localhost:8000/docs`
 
-**Passo 1 — Cadastrar vendedores (1 min)**
+**Passo 1 — Cadastrar vendedores**
 ```
 POST /vendedores
 Body: {"nome": "Ana Silva"}
@@ -68,7 +68,7 @@ Body: {"nome": "Beatriz Costa"}
 > *"Três vendedores cadastrados no sistema."
 > Mostre `GET /vendedores` para listar todos.*
 
-**Passo 2 — Montar a fila (1 min)**
+**Passo 2 — Montar a fila**
 ```
 POST /fila/1   ← Ana entra na fila
 POST /fila/2   ← Carlos entra na fila
@@ -79,7 +79,7 @@ POST /fila/3   ← Beatriz entra na fila
 > 2. Carlos Mendes
 > 3. Beatriz Costa
 
-**Passo 3 — Chamar o próximo (1 min)**
+**Passo 3 — Chamar o próximo**
 ```
 POST /fila/proximo
 ```
@@ -92,7 +92,7 @@ POST /fila/proximo
 
 > *"Esse é o conceito de 'lista da vez' — quem foi atender vai para o final, garantindo que todos tenham chances iguais."
 
-**Passo 4 — Registrar o atendimento (1 min)**
+**Passo 4 — Registrar o atendimento**
 ```
 POST /atendimentos/iniciar/1   ← Ana iniciou o atendimento
 PUT /atendimentos/1/finalizar
@@ -100,7 +100,7 @@ Body: {"houve_venda": true}   ← Fechou a venda!
 ```
 > *"O sistema registra quando começou, quando terminou e se houve venda."
 
-**Passo 5 — Ver o relatório (1 min)**
+**Passo 5 — Ver o relatório**
 ```
 GET /relatorios
 ```
@@ -108,6 +108,10 @@ GET /relatorios
 > *"Ana Silva tem 100% de conversão — 1 atendimento, 1 venda. Os outros ainda não atenderam ninguém."
 
 > *"Imagine o gerente consultando isso ao final do dia para saber o desempenho da equipe."
+> *"Possibilidade de projetar melhor a escala de vendedores."
+> *"Melhor entendimento do Fluxo de clientes em loja ao longo dos dias, semanas e meses."
+> *"Identificar picos no fluxo de atendimento por horario e dia"
+> *"Taxa de clientes atendidos x vendas por vendedor."
 
 ---
 
@@ -122,13 +126,3 @@ GET /relatorios
 
 
 **Fim.**
-
----
-
-## Dicas de Apresentação
-
-- **Fale devagar** — 10 minutos passam rápido, mas você tem conteúdo para preenchê-los
-- **Mostre o código** — alterne entre o navegador (Swagger) e o editor (VS Code) para mostrar a estrutura
-- **Explique o diagrama** — o `database.py` cria o banco, `models.py` define as tabelas, `schemas.py` valida dados e `main.py` recebe as requisições
-- **Faça perguntas** — envolva a turma para manter a atenção
-- **Destaque a documentação automática** — o Swagger é gerado sem escrever uma linha de documentação extra
