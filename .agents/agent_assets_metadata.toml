@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "-L_dw2xZF5LLQlClZ9LQP"
+uri = "file://../../tmp/fila-vendas-api.tar.gz"
+type = "unspecified"
+title = "Projeto Fila de Vendas API (TAR.GZ)"
