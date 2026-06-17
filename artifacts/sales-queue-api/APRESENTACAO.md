@@ -117,11 +117,9 @@ GET /relatorios
 
 1. **Problema:** Desorganização na ordem de atendimento e falta de dados de desempenho
 2. **Solução:** Sistema de fila rotativa com registro de atendimentos e vendas
-3. **Arquitetura:** Python + FastAPI + SQLite — stack leve, simples e acadêmica
+3. **Arquitetura:** Python + FastAPI + SQLite — stack leve e simples
 4. **Demonstração:** A API funciona de ponta a ponta — cadastro, fila, atendimento, relatório
 
-**Pergunta de abertura:**
-> *"E se a loja tivesse 20 vendedores? 50 lojas? A arquitetura escalonaria? Como adaptaríamos?"
 
 **Fim.**
 
